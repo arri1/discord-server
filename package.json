@@ -6,10 +6,15 @@
     "nodemon": "^2.0.5"
   },
   "scripts": {
-    "dev": "nodemon ./app.ts"
+    "dev": "nodemon ./src/app.js",
+    "build": "npx prisma migrate save --experimental -n '' && npx prisma migrate up --experimental && npx prisma generate"
   },
   "dependencies": {
-    "@prisma/client": "2.9.0"
+    "@paljs/generator": "^2.4.0",
+    "@paljs/plugins": "^2.4.0",
+    "@paljs/schema": "^2.4.0",
+    "@prisma/client": "2.9.0",
+    "graphql-yoga": "^1.18.3"
   },
   "engines": {
     "node": ">=10.0.0"
