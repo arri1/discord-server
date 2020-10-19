@@ -1,0 +1,17 @@
+{
+  "name": "script",
+  "license": "MIT",
+  "devDependencies": {
+    "@prisma/cli": "2.9.0",
+    "nodemon": "^2.0.5"
+  },
+  "scripts": {
+    "dev": "nodemon ./app.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "2.9.0"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  }
+}
