@@ -4,3 +4,4 @@ node_modules
 .idea
 /data
 /prisma/migrations
+yarn-error.log

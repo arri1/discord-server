@@ -10,11 +10,16 @@
     "build": "npx prisma migrate save --experimental -n '' && npx prisma migrate up --experimental && npx prisma generate"
   },
   "dependencies": {
+    "@graphql-tools/merge": "^6.2.4",
     "@paljs/generator": "^2.4.0",
     "@paljs/plugins": "^2.4.0",
     "@paljs/schema": "^2.4.0",
     "@prisma/client": "2.9.0",
-    "graphql-yoga": "^1.18.3"
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^8.2.0",
+    "graphql-tag": "^2.11.0",
+    "graphql-yoga": "^1.18.3",
+    "jsonwebtoken": "^8.5.1"
   },
   "engines": {
     "node": ">=10.0.0"

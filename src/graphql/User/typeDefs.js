@@ -3,11 +3,28 @@ const { default: gql } = require('graphql-tag')
 const User = gql`
   type User {
     id: String!
+    login: String!
     name: String
     group: String
   }
+  input AuthUserInput {
+    login: String!
+    password: String!
+  }
+
+  input RegistrationUserInput {
+    login: String!
+    password: String!
+    name: String
+  }
+
+  type AuthUserOutput {
+    token: String!
+    user: User!
+  }
 
   type Query {
+    user: User
     findOneUser(where: UserWhereUniqueInput!): User
     findFirstUser(
       where: UserWhereInput
@@ -43,6 +60,8 @@ const User = gql`
     ): AggregateUser
   }
   type Mutation {
+    registerUser(data: RegistrationUserInput!): AuthUserOutput
+    authUser(data: AuthUserInput!): AuthUserOutput
     createOneUser(data: UserCreateInput!): User!
     updateOneUser(where: UserWhereUniqueInput!, data: UserUpdateInput!): User!
     deleteOneUser(where: UserWhereUniqueInput!): User
