@@ -1,6 +1,6 @@
 const {PrismaClient} = require('@prisma/client')
 const {GraphQLServer} = require('graphql-yoga')
-//const {typeDefs} = require('./graphql/typeDefs')
+const {typeDefs} = require('./graphql/typeDefs')
 const {resolvers} = require('./graphql/resolvers')
 const {checkRole} = require('./utils/auth')
 require('dotenv').config()
@@ -8,7 +8,7 @@ require('dotenv').config()
 const prisma = new PrismaClient()
 
 const server = new GraphQLServer({
-    typeDefs:'./schema.graphql',
+    typeDefs,
     resolvers,
     context: (req) => {
         const {authorization} = req.request.headers

@@ -6,4 +6,5 @@ node_modules
 /prisma/migrations
 yarn-error.log
 package-lock.json
+/schema.graphql
 .graphqlconfig
