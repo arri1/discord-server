@@ -10,6 +10,7 @@ const prisma = new PrismaClient()
 const server = new GraphQLServer({
     typeDefs,
     resolvers,
+    introspection: true,
     context: (req) => {
         const {authorization} = req.request.headers
         const access = {
@@ -38,3 +39,4 @@ const PORT = process.env.PORT || process.env.SERVER_PORT
 server.start({port: PORT}, () => {
     console.log(`Server is running on localhost:${PORT}`)
 })
+
