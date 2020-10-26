@@ -8,7 +8,7 @@
   "scripts": {
     "start": "node ./src/app.js",
     "dev": "nodemon ./src/app.js",
-    "heroku-postbuild":"npx prisma generate",
+    "heroku-postbuild": "npx prisma generate",
     "migrate": "npx prisma migrate save --experimental -n '' && npx prisma migrate up --experimental && npx prisma generate"
   },
   "dependencies": {
@@ -19,6 +19,7 @@
     "@prisma/client": "2.9.0",
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
+    "graphql": "^15.4.0",
     "graphql-tag": "^2.11.0",
     "graphql-yoga": "^1.18.3",
     "jsonwebtoken": "^8.5.1"
