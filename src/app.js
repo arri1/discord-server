@@ -10,7 +10,6 @@ const prisma = new PrismaClient()
 const server = new GraphQLServer({
     typeDefs,
     resolvers,
-    introspection: true,
     context: (req) => {
         const {authorization} = req.request.headers
         const access = {
@@ -32,7 +31,9 @@ const server = new GraphQLServer({
             prisma,
             access
         }
-    }
+    },
+    introspection: true,
+    playground: true,
 })
 const PORT = process.env.PORT || process.env.SERVER_PORT
 
