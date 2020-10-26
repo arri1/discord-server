@@ -36,8 +36,8 @@ const User = {
             }
         },
         authUser: async (_parent, {data}, {prisma}) => {
-            const {password, email} = data
-            const user = await prisma.user.findOne({where: {email}})
+            const {password, login} = data
+            const user = await prisma.user.findOne({where: {login}})
             const compare = bcrypt.compareSync(password, user.password)
             if (!compare) throw new Error("Incorrect password")
             const token = await jwt.sign({id: user.id}, process.env.USER_SECRET)
@@ -45,6 +45,14 @@ const User = {
                 token,
                 user
             }
+        },
+        updateUser: async (_parent, args, {prisma, access}) => {
+            const {id} = await access.user()
+            args.where = {id}
+            if (args.data.password && args.data.password.set) {
+                args.data.password.set = await bcrypt.hash(args.data.password.set, 10)
+            }
+            return prisma.user.update(args)
         },
         createOneUser: (_parent, args, {prisma}) => {
             throw new Error('Not access')
