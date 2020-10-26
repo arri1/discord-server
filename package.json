@@ -8,7 +8,7 @@
   "scripts": {
     "start": "node ./src/app.js",
     "dev": "nodemon ./src/app.js",
-    "heroku-postbuild": "npx prisma generate && npm dedupe",
+    "heroku-postbuild": "npx prisma generate",
     "migrate": "npx prisma migrate save --experimental -n '' && npx prisma migrate up --experimental && npx prisma generate"
   },
   "dependencies": {
@@ -26,5 +26,8 @@
   },
   "engines": {
     "node": ">=10.0.0"
+  },
+  "resolutions": {
+    "graphql": "^0.13.0"
   }
 }
