@@ -5,3 +5,4 @@ node_modules
 /data
 /prisma/migrations
 yarn-error.log
+package-lock.json
