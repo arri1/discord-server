@@ -1,5 +1,8 @@
 const {PrismaClient} = require('@prisma/client')
 const {GraphQLServer} = require('graphql-yoga')
+const {generateGraphQlSDLFile, PrismaSelect} = require('@paljs/plugins')
+const {applyMiddleware} = require('graphql-middleware')
+const {makeExecutableSchema} = require('graphql-tools')
 const {typeDefs} = require('./graphql/typeDefs')
 const {resolvers} = require('./graphql/resolvers')
 const {checkRole} = require('./utils/auth')
@@ -7,9 +10,26 @@ require('dotenv').config()
 
 const prisma = new PrismaClient()
 
+let schema = makeExecutableSchema({typeDefs, resolvers});
+
+// Build one sdl file have all types you can delete if you not need
+generateGraphQlSDLFile(schema);
+
+const middleware = async (resolve, root, args, context, info) => {
+    const result = new PrismaSelect(info).value;
+    if (Object.keys(result.select).length > 0) {
+        args = {
+            ...args,
+            ...result,
+        };
+    }
+    return resolve(root, args, context, info);
+};
+
+schema = applyMiddleware(schema, middleware);
+
 const server = new GraphQLServer({
-    typeDefs,
-    resolvers,
+    schema,
     context: (req) => {
         const {authorization} = req.request.headers
         const access = {
