@@ -8,7 +8,7 @@
   "scripts": {
     "start": "node ./src/app.js",
     "dev": "nodemon ./src/app.js",
-    "migrate": "npx prisma migrate save --experimental -n '' && npx prisma migrate up --experimental && npx prisma generate"
+    "build": "npx prisma migrate save --experimental -n '' && npx prisma migrate up --experimental && npx prisma generate"
   },
   "dependencies": {
     "@graphql-tools/merge": "6.2.4",
