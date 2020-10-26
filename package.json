@@ -2,7 +2,6 @@
   "name": "script",
   "license": "MIT",
   "devDependencies": {
-    "@prisma/cli": "2.9.0",
     "nodemon": "^2.0.5"
   },
   "scripts": {
@@ -11,6 +10,7 @@
     "migrate": "npx prisma migrate save --experimental -n '' && npx prisma migrate up --experimental && npx prisma generate"
   },
   "dependencies": {
+    "@prisma/cli": "2.9.0",
     "@graphql-tools/merge": "^6.2.4",
     "@paljs/generator": "2.5.2",
     "@paljs/plugins": "2.5.2",
