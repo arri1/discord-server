@@ -29,6 +29,6 @@
     "yarn": ">=1.22.0"
   },
   "resolutions": {
-    "graphql": "15.4.0"
+    "graphql": "^15.4.0"
   }
 }
