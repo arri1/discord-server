@@ -8,7 +8,7 @@ require('dotenv').config()
 const prisma = new PrismaClient()
 
 const server = new GraphQLServer({
-    typeDefs,
+    typeDefs:'./schema.graphql',
     resolvers,
     context: (req) => {
         const {authorization} = req.request.headers

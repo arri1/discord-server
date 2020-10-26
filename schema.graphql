@@ -1,185 +1,193 @@
-type AggregateUser {
-  count: Int!
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+    mutation: Mutation
 }
 
-input AuthUserInput {
-  login: String!
-  password: String!
+type AggregateUser {
+    count: Int!
 }
 
 type AuthUserOutput {
-  token: String!
-  user: User!
+    token: String!
+    user: User!
 }
 
 type BatchPayload {
-  count: Int!
+    count: Int!
 }
-
-scalar DateTime
 
 type Mutation {
-  registerUser(data: RegistrationUserInput!): AuthUserOutput
-  authUser(data: AuthUserInput!): AuthUserOutput
-  updateUser(data: UserUpdateInput!): User!
-  createOneUser(data: UserCreateInput!): User!
-  updateOneUser(where: UserWhereUniqueInput!, data: UserUpdateInput!): User!
-  deleteOneUser(where: UserWhereUniqueInput!): User
-  upsertOneUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User
-  deleteManyUser(where: UserWhereInput): BatchPayload
-  updateManyUser(where: UserWhereInput, data: UserUpdateManyMutationInput): BatchPayload
-}
-
-input NestedStringFilter {
-  equals: String
-  in: [String!]
-  notIn: [String!]
-  lt: String
-  lte: String
-  gt: String
-  gte: String
-  contains: String
-  startsWith: String
-  endsWith: String
-  not: NestedStringFilter
-}
-
-input NestedStringNullableFilter {
-  equals: String
-  in: [String!]
-  notIn: [String!]
-  lt: String
-  lte: String
-  gt: String
-  gte: String
-  contains: String
-  startsWith: String
-  endsWith: String
-  not: NestedStringNullableFilter
-}
-
-input NullableStringFieldUpdateOperationsInput {
-  set: String
+    authUser(data: AuthUserInput!): AuthUserOutput
+    createOneUser(data: UserCreateInput!): User!
+    deleteManyUser(where: UserWhereInput): BatchPayload
+    deleteOneUser(where: UserWhereUniqueInput!): User
+    registerUser(data: RegistrationUserInput!): AuthUserOutput
+    updateManyUser(data: UserUpdateManyMutationInput, where: UserWhereInput): BatchPayload
+    updateOneUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
+    updateUser(data: UserUpdateInput!): User!
+    upsertOneUser(create: UserCreateInput!, update: UserUpdateInput!, where: UserWhereUniqueInput!): User
 }
 
 type Query {
-  user: User
-  findOneUser(where: UserWhereUniqueInput!): User
-  findFirstUser(where: UserWhereInput, orderBy: [UserOrderByInput!], cursor: UserWhereUniqueInput, distinct: UserDistinctFieldEnum, skip: Int, take: Int): [User!]
-  findManyUser(where: UserWhereInput, orderBy: [UserOrderByInput!], cursor: UserWhereUniqueInput, distinct: UserDistinctFieldEnum, skip: Int, take: Int): [User!]
-  findManyUserCount(where: UserWhereInput, orderBy: [UserOrderByInput!], cursor: UserWhereUniqueInput, distinct: UserDistinctFieldEnum, skip: Int, take: Int): Int!
-  aggregateUser(where: UserWhereInput, orderBy: [UserOrderByInput!], cursor: UserWhereUniqueInput, distinct: UserDistinctFieldEnum, skip: Int, take: Int): AggregateUser
-}
-
-enum QueryMode {
-  default
-  insensitive
-}
-
-input RegistrationUserInput {
-  login: String!
-  password: String!
-  name: String
-}
-
-enum SortOrder {
-  asc
-  desc
-}
-
-input StringFieldUpdateOperationsInput {
-  set: String
-}
-
-input StringFilter {
-  equals: String
-  in: [String!]
-  notIn: [String!]
-  lt: String
-  lte: String
-  gt: String
-  gte: String
-  contains: String
-  startsWith: String
-  endsWith: String
-  mode: QueryMode
-  not: NestedStringFilter
-}
-
-input StringNullableFilter {
-  equals: String
-  in: [String!]
-  notIn: [String!]
-  lt: String
-  lte: String
-  gt: String
-  gte: String
-  contains: String
-  startsWith: String
-  endsWith: String
-  mode: QueryMode
-  not: NestedStringNullableFilter
+    aggregateUser(cursor: UserWhereUniqueInput, distinct: UserDistinctFieldEnum, orderBy: [UserOrderByInput!], skip: Int, take: Int, where: UserWhereInput): AggregateUser
+    findFirstUser(cursor: UserWhereUniqueInput, distinct: UserDistinctFieldEnum, orderBy: [UserOrderByInput!], skip: Int, take: Int, where: UserWhereInput): [User!]
+    findManyUser(cursor: UserWhereUniqueInput, distinct: UserDistinctFieldEnum, orderBy: [UserOrderByInput!], skip: Int, take: Int, where: UserWhereInput): [User!]
+    findManyUserCount(cursor: UserWhereUniqueInput, distinct: UserDistinctFieldEnum, orderBy: [UserOrderByInput!], skip: Int, take: Int, where: UserWhereInput): Int!
+    findOneUser(where: UserWhereUniqueInput!): User
+    user: User
 }
 
 type User {
-  id: String!
-  login: String!
-  name: String
-  group: String
+    group: String
+    id: String!
+    login: String!
+    name: String
 }
 
-input UserCreateInput {
-  id: String
-  login: String!
-  name: String
-  group: String
-  password: String!
+enum QueryMode {
+    default
+    insensitive
+}
+
+enum SortOrder {
+    asc
+    desc
 }
 
 enum UserDistinctFieldEnum {
-  id
-  login
-  name
-  group
-  password
+    group
+    id
+    login
+    name
+    password
+}
+
+input AuthUserInput {
+    login: String!
+    password: String!
+}
+
+input NestedStringFilter {
+    contains: String
+    endsWith: String
+    equals: String
+    gt: String
+    gte: String
+    in: [String!]
+    lt: String
+    lte: String
+    not: NestedStringFilter
+    notIn: [String!]
+    startsWith: String
+}
+
+input NestedStringNullableFilter {
+    contains: String
+    endsWith: String
+    equals: String
+    gt: String
+    gte: String
+    in: [String!]
+    lt: String
+    lte: String
+    not: NestedStringNullableFilter
+    notIn: [String!]
+    startsWith: String
+}
+
+input NullableStringFieldUpdateOperationsInput {
+    set: String
+}
+
+input RegistrationUserInput {
+    login: String!
+    name: String
+    password: String!
+}
+
+input StringFieldUpdateOperationsInput {
+    set: String
+}
+
+input StringFilter {
+    contains: String
+    endsWith: String
+    equals: String
+    gt: String
+    gte: String
+    in: [String!]
+    lt: String
+    lte: String
+    mode: QueryMode
+    not: NestedStringFilter
+    notIn: [String!]
+    startsWith: String
+}
+
+input StringNullableFilter {
+    contains: String
+    endsWith: String
+    equals: String
+    gt: String
+    gte: String
+    in: [String!]
+    lt: String
+    lte: String
+    mode: QueryMode
+    not: NestedStringNullableFilter
+    notIn: [String!]
+    startsWith: String
+}
+
+input UserCreateInput {
+    group: String
+    id: String
+    login: String!
+    name: String
+    password: String!
 }
 
 input UserOrderByInput {
-  id: SortOrder
-  login: SortOrder
-  name: SortOrder
-  group: SortOrder
-  password: SortOrder
+    group: SortOrder
+    id: SortOrder
+    login: SortOrder
+    name: SortOrder
+    password: SortOrder
 }
 
 input UserUpdateInput {
-  id: StringFieldUpdateOperationsInput
-  login: StringFieldUpdateOperationsInput
-  name: NullableStringFieldUpdateOperationsInput
-  group: NullableStringFieldUpdateOperationsInput
-  password: StringFieldUpdateOperationsInput
+    group: NullableStringFieldUpdateOperationsInput
+    id: StringFieldUpdateOperationsInput
+    login: StringFieldUpdateOperationsInput
+    name: NullableStringFieldUpdateOperationsInput
+    password: StringFieldUpdateOperationsInput
 }
 
 input UserUpdateManyMutationInput {
-  id: StringFieldUpdateOperationsInput
-  login: StringFieldUpdateOperationsInput
-  name: NullableStringFieldUpdateOperationsInput
-  group: NullableStringFieldUpdateOperationsInput
-  password: StringFieldUpdateOperationsInput
+    group: NullableStringFieldUpdateOperationsInput
+    id: StringFieldUpdateOperationsInput
+    login: StringFieldUpdateOperationsInput
+    name: NullableStringFieldUpdateOperationsInput
+    password: StringFieldUpdateOperationsInput
 }
 
 input UserWhereInput {
-  AND: [UserWhereInput!]
-  OR: [UserWhereInput!]
-  NOT: [UserWhereInput!]
-  id: StringFilter
-  login: StringFilter
-  name: StringNullableFilter
-  group: StringNullableFilter
-  password: StringFilter
+    AND: [UserWhereInput!]
+    NOT: [UserWhereInput!]
+    OR: [UserWhereInput!]
+    group: StringNullableFilter
+    id: StringFilter
+    login: StringFilter
+    name: StringNullableFilter
+    password: StringFilter
 }
 
 input UserWhereUniqueInput {
-  id: String
-  login: String
+    id: String
+    login: String
 }
+
+
+scalar DateTime
