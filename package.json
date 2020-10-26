@@ -25,7 +25,8 @@
     "jsonwebtoken": "^8.5.1"
   },
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=10.0.0",
+    "yarn": ">=1.22.0"
   },
   "resolutions": {
     "graphql": "15.4.0"
