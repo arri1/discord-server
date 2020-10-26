@@ -12,8 +12,8 @@
   },
   "dependencies": {
     "@graphql-tools/merge": "6.2.4",
-    "@paljs/generator": "2.4.0",
-    "@paljs/plugins": "2.4.0",
+    "@paljs/generator": "2.5.2",
+    "@paljs/plugins": "2.5.2",
     "@paljs/schema": "2.4.0",
     "@prisma/client": "2.9.0",
     "bcryptjs": "^2.4.3",
