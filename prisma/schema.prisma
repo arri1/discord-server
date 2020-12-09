@@ -13,7 +13,7 @@ model User {
   name          String?
   group         String?
   password      String
-  users         Post[]
+  posts         Post[]
 }
 
 model Post {
