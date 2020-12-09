@@ -1,5 +1,6 @@
 const {PrismaClient} = require('@prisma/client')
 const {GraphQLServer} = require('graphql-yoga')
+const {PrismaSelect} = require('@paljs/plugins')
 const {typeDefs} = require('./graphql/typeDefs')
 const {resolvers} = require('./graphql/resolvers')
 const {checkRole} = require('./utils/auth')
@@ -7,6 +8,16 @@ require('dotenv').config()
 
 const prisma = new PrismaClient()
 
+const middleware = async (resolve, root, args, context, info) => {
+    const result = new PrismaSelect(info).value
+    if (Object.keys(result.select).length > 0) {
+        args = {
+            ...args,
+            ...result
+        }
+    }
+    return resolve(root, args, context, info)
+}
 const server = new GraphQLServer({
     typeDefs,
     resolvers,
@@ -34,6 +45,7 @@ const server = new GraphQLServer({
     },
     introspection: true,
     playground: true,
+    middlewares: [middleware]
 })
 const PORT = process.env.PORT || process.env.SERVER_PORT
 
