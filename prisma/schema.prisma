@@ -13,4 +13,13 @@ model User {
   name          String?
   group         String?
   password      String
+  users         Post[]
+}
+
+model Post {
+    id          String      @id @default(cuid())
+    user        User        @relation(fields: [userId], references: [id])
+    userId      String
+    text        String?
+    title       String
 }
