@@ -3,8 +3,8 @@ const { default: gql } = require('graphql-tag')
 const Post = gql`
   type Post {
     id: String!
-    user: User!
-    userId: String!
+    user: User
+    userId: String
     text: String
     title: String!
   }
