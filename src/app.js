@@ -47,7 +47,7 @@ const server = new GraphQLServer({
     playground: true,
     middlewares: [middleware]
 })
-const PORT = process.env.PORT || process.env.SERVER_PORT
+const PORT = process.env.PORT || process.env.SERVER_PORT || 80
 
 server.start({port: PORT}, () => {
     console.log(`Server is running on localhost:${PORT}`)
