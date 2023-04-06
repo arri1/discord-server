@@ -1,7 +1,6 @@
 datasource db {
   provider = "postgresql"
-  url      = postgresql://discord:discord@localhost:5432/discord?schema=sample
-}
+  url      = env("DATABASE_URL")
 
 generator client {
   provider = "prisma-client-js"
